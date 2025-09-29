@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://u4gtq6u8r1u0"]
+
+[ext_resource type="Script" path="res://scripts/player.gd" id="1_3kug5"]
+[ext_resource type="PackedScene" uid="uid://cv6q56s2k1evm" path="res://scenes/cameras/player_camera.tscn" id="2_26qud"]
+[ext_resource type="PackedScene" uid="uid://rqy2h60xcbre" path="res://scenes/components/movement_component.tscn" id="3_8manv"]
+[ext_resource type="PackedScene" uid="uid://8p67v4y57tdt" path="res://scenes/components/jump_component.tscn" id="4_ihy6v"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44f2g"]
+
+[node name="player" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03385, 0)
+script = ExtResource("1_3kug5")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_44f2g")
+
+[node name="PlayerCamera" parent="." instance=ExtResource("2_26qud")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83407, 0)
+
+[node name="MovementComponent" parent="." instance=ExtResource("3_8manv")]
+
+[node name="JumpComponent" parent="." instance=ExtResource("4_ihy6v")]

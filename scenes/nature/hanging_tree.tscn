@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://6d8peas6uukv"]
+
+[ext_resource type="PackedScene" uid="uid://tah3jhc6a0ih" path="res://models/nature/trees/tree_ps1psx_style.glb" id="1_s6lh7"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_ox4yk"]
+radius = 0.3
+
+[node name="hanging_tree" type="StaticBody3D"]
+
+[node name="Sketchfab_Scene" parent="." instance=ExtResource("1_s6lh7")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.384547, 0)
+shape = SubResource("CapsuleShape3D_ox4yk")

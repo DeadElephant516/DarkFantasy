@@ -1,0 +1,121 @@
+[gd_scene load_steps=12 format=3 uid="uid://dg6i6mk806gnc"]
+
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_lyegx"]
+[ext_resource type="Resource" path="res://TerrainData/data.hterrain" id="2_h86o2"]
+[ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain_texture_set.gd" id="3_3sss0"]
+[ext_resource type="Texture2D" uid="uid://diai5uv1ju2pu" path="res://textures/Dirt/Dirt_20-128x128.png" id="4_r556c"]
+[ext_resource type="Texture2D" uid="uid://dxnqbuaedt2cp" path="res://TerrainData/terrain_slot1_albedo_bump.png" id="5_ayv8g"]
+[ext_resource type="Texture2D" uid="uid://cttemuuo2vq0u" path="res://TerrainData/terrain_slot0_normal_roughness.png" id="6_0dhun"]
+[ext_resource type="Texture2D" uid="uid://x2tds0dff8qv" path="res://TerrainData/terrain_slot1_normal_roughness.png" id="7_pndoy"]
+[ext_resource type="PackedScene" uid="uid://6d8peas6uukv" path="res://scenes/nature/hanging_tree.tscn" id="8_v6ivb"]
+[ext_resource type="PackedScene" uid="uid://u4gtq6u8r1u0" path="res://scenes/entities/player/player.tscn" id="9_k6m1v"]
+
+[sub_resource type="Resource" id="Resource_lnjfk"]
+script = ExtResource("3_3sss0")
+mode = 0
+textures = [[ExtResource("4_r556c"), ExtResource("5_ayv8g")], [ExtResource("6_0dhun"), ExtResource("7_pndoy")]]
+
+[sub_resource type="Environment" id="Environment_4merl"]
+background_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+fog_light_color = Color(0.123432, 0.138034, 0.160991, 1)
+fog_light_energy = 0.5
+fog_density = 0.08
+volumetric_fog_density = 0.1
+volumetric_fog_albedo = Color(0.144062, 0.144063, 0.144062, 1)
+
+[node name="Terrain" type="Node3D"]
+
+[node name="HTerrain" type="Node3D" parent="."]
+script = ExtResource("1_lyegx")
+_terrain_data = ExtResource("2_h86o2")
+chunk_size = 32
+collision_enabled = true
+collision_layer = 1
+collision_mask = 1
+shader_type = "Classic4Lite"
+custom_shader = null
+custom_globalmap_shader = null
+texture_set = SubResource("Resource_lnjfk")
+render_layers = 1
+cast_shadow = 1
+shader_params/u_ground_uv_scale = 20
+shader_params/u_depth_blending = true
+shader_params/u_triplanar = null
+shader_params/u_tile_reduction = null
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4merl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.00217653, -0.942293, -0.334783, 0.010011, -0.334787, 0.942241, -0.999948, -0.00130069, 0.010162, 28.6951, 25.7385, 47.3447)
+light_color = Color(0.241157, 0.241156, 0.241156, 1)
+light_energy = 0.5
+light_volumetric_fog_energy = 16.0
+
+[node name="trees" type="Node3D" parent="."]
+
+[node name="hanging_tree" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.674972, 0, 0.737843, 0, 1, 0, -0.737843, 0, 0.674972, 13.5637, -0.13401, 42.577)
+
+[node name="hanging_tree2" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.816762, 0, -0.576974, 0, 1, 0, 0.576974, 0, 0.816762, 17.3724, -0.13401, 46.8252)
+
+[node name="hanging_tree3" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(-0.0476817, 0, -0.998863, 0, 1, 0, 0.998863, 0, -0.0476817, 20.8798, -0.13401, 40.9232)
+
+[node name="hanging_tree4" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(-0.800187, 0, -0.59975, 0, 1, 0, 0.59975, 0, -0.800187, 17.7461, -0.13401, 37.4642)
+
+[node name="hanging_tree5" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.154866, 0, -0.987936, 0, 1, 0, 0.987936, 0, 0.154866, 12.1902, -0.13401, 34.7152)
+
+[node name="hanging_tree6" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.995403, 0, 0.0957764, 0, 1, 0, -0.0957764, 0, 0.995403, 12.1902, -0.13401, 27.4684)
+
+[node name="hanging_tree7" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.58691, 0, -0.809653, 0, 1, 0, 0.809653, 0, 0.58691, 18.3712, -0.13401, 27.4684)
+
+[node name="hanging_tree8" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.917581, 0, -0.397548, 0, 1, 0, 0.397548, 0, 0.917581, 16.1554, -0.13401, 20.227)
+
+[node name="hanging_tree9" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.917581, 0, -0.397548, 0, 1, 0, 0.397548, 0, 0.917581, 8.44834, -0.13401, 15.8767)
+
+[node name="hanging_tree10" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.917581, 0, -0.397548, 0, 1, 0, 0.397548, 0, 0.917581, 12.0875, -0.13401, 21.0957)
+
+[node name="hanging_tree11" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.148275, 0, 0.988946, 0, 1, 0, -0.988946, 0, 0.148275, 7.88547, -0.13401, 22.7645)
+
+[node name="hanging_tree12" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.922464, 0, 0.386083, 0, 1, 0, -0.386083, 0, 0.922464, 15.1806, -0.13401, 13.4985)
+
+[node name="hanging_tree13" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.319257, 0, 0.947668, 0, 1, 0, -0.947668, 0, 0.319257, 21.7655, -0.13401, 13.4985)
+
+[node name="hanging_tree14" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.319257, 0, 0.947668, 0, 1, 0, -0.947668, 0, 0.319257, 21.7655, -0.13401, 13.4985)
+
+[node name="hanging_tree15" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(-0.0210995, 0, 0.999777, 0, 1, 0, -0.999777, 0, -0.0210995, 21.7655, -0.13401, 21.9279)
+
+[node name="hanging_tree16" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(-0.0210995, 0, 0.999777, 0, 1, 0, -0.999777, 0, -0.0210995, 22.6727, -0.13401, 32.2189)
+
+[node name="hanging_tree17" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.339756, 0, 0.940514, 0, 1, 0, -0.940514, 0, 0.339756, 17.6327, -0.13401, 32.2189)
+
+[node name="hanging_tree18" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(-0.296142, 0, 0.955144, 0, 1, 0, -0.955144, 0, -0.296142, 12.2205, -0.13401, 51.3745)
+
+[node name="hanging_tree19" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(-0.71259, 0, 0.701581, 0, 1, 0, -0.701581, 0, -0.71259, 21.1801, -0.13401, 51.3745)
+
+[node name="hanging_tree20" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.442336, 0, 0.89685, 0, 1, 0, -0.89685, 0, 0.442336, 21.1801, -0.13401, 46.401)
+
+[node name="hanging_tree21" parent="trees" instance=ExtResource("8_v6ivb")]
+transform = Transform3D(0.442336, 0, 0.89685, 0, 1, 0, -0.89685, 0, 0.442336, 10.4714, -0.13401, 38.3162)
+
+[node name="player" parent="." instance=ExtResource("9_k6m1v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1109, 1.51335, 22.2821)
