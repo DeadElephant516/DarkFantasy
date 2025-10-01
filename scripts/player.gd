@@ -5,6 +5,7 @@ var speed:float = 1.5
 var flank_speed:float = 1.0
 var jump_vlct:float = 3.0
 var direction:Vector3
+var interactable:Interactable
 
 
 @onready var camera: Camera3D = $PlayerCamera
@@ -13,6 +14,10 @@ var direction:Vector3
 @onready var inv_comp: Inventory = $InventoryComponent
 
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("e"):
+		if interactable:
+			interactable.interact(self)
 
 func _process(delta: float) -> void:
 		camera.headbob(delta,self)
@@ -23,3 +28,13 @@ func _physics_process(delta: float) -> void:
 	move_comp.move(self,speed,direction,delta)
 	jump_comp.jump(self,jump_vlct)
 	move_and_slide()
+
+
+
+func _on_interact_area_area_entered(area: Area3D) -> void:
+	if area is Interactable:
+		interactable = area
+
+func _on_interact_area_area_exited(area: Area3D) -> void:
+	if area is Interactable:
+		interactable = null

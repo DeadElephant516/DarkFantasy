@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://u4gtq6u8r1u0"]
+[gd_scene load_steps=8 format=3 uid="uid://u4gtq6u8r1u0"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3kug5"]
 [ext_resource type="PackedScene" uid="uid://cv6q56s2k1evm" path="res://scenes/cameras/player_camera.tscn" id="2_26qud"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://byh3s8ibf5pll" path="res://scenes/components/inventory_component.tscn" id="5_rpcvy"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44f2g"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_f0fd0"]
+height = 0.558195
+radius = 1.03496
 
 [node name="player" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.03385, 0)
@@ -25,3 +29,15 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83407, 0)
 [node name="JumpComponent" parent="." instance=ExtResource("4_ihy6v")]
 
 [node name="InventoryComponent" parent="." instance=ExtResource("5_rpcvy")]
+max_slots = 1
+
+[node name="interact_area" type="Area3D" parent="."]
+collision_layer = 0
+collision_mask = 4
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.333479, 0)
+shape = SubResource("CylinderShape3D_f0fd0")
+
+[connection signal="area_entered" from="interact_area" to="." method="_on_interact_area_area_entered"]
+[connection signal="area_exited" from="interact_area" to="." method="_on_interact_area_area_exited"]

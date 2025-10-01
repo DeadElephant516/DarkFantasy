@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cy4msefshpb5y"]
+
+[ext_resource type="PackedScene" uid="uid://2pw7qivfvv4k" path="res://scenes/interactables/interactable.tscn" id="1_ikt2w"]
+[ext_resource type="Script" path="res://scripts/pick_up.gd" id="2_c38pc"]
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_1w8vx"]
+radius = 1.0
+
+[node name="pick_up" instance=ExtResource("1_ikt2w")]
+script = ExtResource("2_c38pc")
+item = null
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("CylinderShape3D_1w8vx")
+
+[node name="pickup_label" type="Label" parent="." index="1"]
+visible = false
+offset_right = 40.0
+offset_bottom = 23.0
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

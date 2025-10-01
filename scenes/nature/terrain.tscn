@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://x2tds0dff8qv" path="res://TerrainData/terrain_slot1_normal_roughness.png" id="7_pndoy"]
 [ext_resource type="PackedScene" uid="uid://6d8peas6uukv" path="res://scenes/nature/hanging_tree.tscn" id="8_v6ivb"]
 [ext_resource type="PackedScene" uid="uid://u4gtq6u8r1u0" path="res://scenes/entities/player/player.tscn" id="9_k6m1v"]
-[ext_resource type="PackedScene" uid="uid://7ywidi76q4ef" path="res://scenes/pick_up.tscn" id="10_cqjdy"]
+[ext_resource type="PackedScene" uid="uid://cy4msefshpb5y" path="res://scenes/interactables/pick_up.tscn" id="10_k4a0e"]
 [ext_resource type="Resource" uid="uid://dxxcsawlijybm" path="res://resources/basic_sword.tres" id="11_27mr5"]
 [ext_resource type="Resource" uid="uid://3jw8eqtuu7tu" path="res://resources/iron_sword.tres" id="12_r21pq"]
 
@@ -129,10 +129,10 @@ transform = Transform3D(0.442336, 0, 0.89685, 0, 1, 0, -0.89685, 0, 0.442336, 10
 [node name="player" parent="." instance=ExtResource("9_k6m1v")]
 transform = Transform3D(0.0793116, 0, -0.99685, 0, 1, 0, 0.99685, 0, 0.0793116, 21.8803, 1.51335, 29.3932)
 
-[node name="pick_up" parent="." instance=ExtResource("10_cqjdy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6572, 0, 32.0191)
-item = ExtResource("11_27mr5")
-
-[node name="pick_up2" parent="." instance=ExtResource("10_cqjdy")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4978, 0, 32.0191)
+[node name="pick_up" parent="." instance=ExtResource("10_k4a0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.1414, 0, 28.6391)
 item = ExtResource("12_r21pq")
+
+[node name="pick_up2" parent="." instance=ExtResource("10_k4a0e")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 26.1414, 0, 27.6391)
+item = ExtResource("11_27mr5")
