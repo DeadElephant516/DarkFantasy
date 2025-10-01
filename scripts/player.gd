@@ -6,9 +6,12 @@ var flank_speed:float = 1.0
 var jump_vlct:float = 3.0
 var direction:Vector3
 
+
 @onready var camera: Camera3D = $PlayerCamera
 @onready var move_comp: MovementComponent = $MovementComponent
 @onready var jump_comp: JumpComponent = $JumpComponent
+@onready var inv_comp: Inventory = $InventoryComponent
+
 
 
 func _process(delta: float) -> void:

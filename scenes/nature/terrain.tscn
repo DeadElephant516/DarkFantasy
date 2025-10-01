@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://dg6i6mk806gnc"]
+[gd_scene load_steps=17 format=3 uid="uid://dg6i6mk806gnc"]
 
 [ext_resource type="Script" path="res://addons/zylann.hterrain/hterrain.gd" id="1_lyegx"]
 [ext_resource type="Resource" path="res://TerrainData/data.hterrain" id="2_h86o2"]
@@ -9,21 +9,39 @@
 [ext_resource type="Texture2D" uid="uid://x2tds0dff8qv" path="res://TerrainData/terrain_slot1_normal_roughness.png" id="7_pndoy"]
 [ext_resource type="PackedScene" uid="uid://6d8peas6uukv" path="res://scenes/nature/hanging_tree.tscn" id="8_v6ivb"]
 [ext_resource type="PackedScene" uid="uid://u4gtq6u8r1u0" path="res://scenes/entities/player/player.tscn" id="9_k6m1v"]
+[ext_resource type="PackedScene" uid="uid://7ywidi76q4ef" path="res://scenes/pick_up.tscn" id="10_cqjdy"]
+[ext_resource type="Resource" uid="uid://dxxcsawlijybm" path="res://resources/basic_sword.tres" id="11_27mr5"]
+[ext_resource type="Resource" uid="uid://3jw8eqtuu7tu" path="res://resources/iron_sword.tres" id="12_r21pq"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i1loj"]
+sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+
+[sub_resource type="Sky" id="Sky_2g7nj"]
+sky_material = SubResource("ProceduralSkyMaterial_i1loj")
+
+[sub_resource type="Environment" id="Environment_4m2tf"]
+background_mode = 1
+sky = SubResource("Sky_2g7nj")
+ambient_light_source = 2
+ambient_light_color = Color(0.408329, 0.408329, 0.408329, 1)
+tonemap_mode = 2
+glow_enabled = true
 
 [sub_resource type="Resource" id="Resource_lnjfk"]
 script = ExtResource("3_3sss0")
 mode = 0
 textures = [[ExtResource("4_r556c"), ExtResource("5_ayv8g")], [ExtResource("6_0dhun"), ExtResource("7_pndoy")]]
 
-[sub_resource type="Environment" id="Environment_4merl"]
-background_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
-fog_light_color = Color(0.123432, 0.138034, 0.160991, 1)
-fog_light_energy = 0.5
-fog_density = 0.08
-volumetric_fog_density = 0.1
-volumetric_fog_albedo = Color(0.144062, 0.144063, 0.144062, 1)
-
 [node name="Terrain" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.39689, 0.396889, 0.396889, 1)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4m2tf")
 
 [node name="HTerrain" type="Node3D" parent="."]
 script = ExtResource("1_lyegx")
@@ -42,15 +60,6 @@ shader_params/u_ground_uv_scale = 20
 shader_params/u_depth_blending = true
 shader_params/u_triplanar = null
 shader_params/u_tile_reduction = null
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4merl")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.00217653, -0.942293, -0.334783, 0.010011, -0.334787, 0.942241, -0.999948, -0.00130069, 0.010162, 28.6951, 25.7385, 47.3447)
-light_color = Color(0.241157, 0.241156, 0.241156, 1)
-light_energy = 0.5
-light_volumetric_fog_energy = 16.0
 
 [node name="trees" type="Node3D" parent="."]
 
@@ -118,4 +127,12 @@ transform = Transform3D(0.442336, 0, 0.89685, 0, 1, 0, -0.89685, 0, 0.442336, 21
 transform = Transform3D(0.442336, 0, 0.89685, 0, 1, 0, -0.89685, 0, 0.442336, 10.4714, -0.13401, 38.3162)
 
 [node name="player" parent="." instance=ExtResource("9_k6m1v")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.1109, 1.51335, 22.2821)
+transform = Transform3D(0.0793116, 0, -0.99685, 0, 1, 0, 0.99685, 0, 0.0793116, 21.8803, 1.51335, 29.3932)
+
+[node name="pick_up" parent="." instance=ExtResource("10_cqjdy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.6572, 0, 32.0191)
+item = ExtResource("11_27mr5")
+
+[node name="pick_up2" parent="." instance=ExtResource("10_cqjdy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.4978, 0, 32.0191)
+item = ExtResource("12_r21pq")

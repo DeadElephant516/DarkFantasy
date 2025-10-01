@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://u5er11t8kx48"]
+
+[ext_resource type="PackedScene" uid="uid://cg7bl1hs2xjoh" path="res://models/weapons/iron_sword/Sword1.glb" id="1_plwr7"]
+
+[node name="iron_sword" type="Node3D"]
+
+[node name="Sword1" parent="." instance=ExtResource("1_plwr7")]

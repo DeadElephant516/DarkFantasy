@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://byh3s8ibf5pll"]
+
+[ext_resource type="Script" path="res://scripts/inventory_component.gd" id="1_illao"]
+
+[node name="InventoryComponent" type="Node"]
+script = ExtResource("1_illao")
+max_slots = 15
