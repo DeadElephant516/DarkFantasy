@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://u4gtq6u8r1u0"]
+[gd_scene load_steps=9 format=3 uid="uid://u4gtq6u8r1u0"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_3kug5"]
 [ext_resource type="PackedScene" uid="uid://cv6q56s2k1evm" path="res://scenes/cameras/player_camera.tscn" id="2_26qud"]
 [ext_resource type="PackedScene" uid="uid://rqy2h60xcbre" path="res://scenes/components/movement_component.tscn" id="3_8manv"]
 [ext_resource type="PackedScene" uid="uid://8p67v4y57tdt" path="res://scenes/components/jump_component.tscn" id="4_ihy6v"]
 [ext_resource type="PackedScene" uid="uid://byh3s8ibf5pll" path="res://scenes/components/inventory_component.tscn" id="5_rpcvy"]
+[ext_resource type="PackedScene" uid="uid://dwgvat1usplle" path="res://scenes/UI/inventory_display.tscn" id="6_gc22q"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_44f2g"]
 
@@ -29,15 +30,21 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.83407, 0)
 [node name="JumpComponent" parent="." instance=ExtResource("4_ihy6v")]
 
 [node name="InventoryComponent" parent="." instance=ExtResource("5_rpcvy")]
-max_slots = 1
+max_slots = 3
 
 [node name="interact_area" type="Area3D" parent="."]
+visible = false
 collision_layer = 0
 collision_mask = 4
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="interact_area"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.333479, 0)
 shape = SubResource("CylinderShape3D_f0fd0")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="InventoryDisplay" parent="UI" instance=ExtResource("6_gc22q")]
+visible = false
 
 [connection signal="area_entered" from="interact_area" to="." method="_on_interact_area_area_entered"]
 [connection signal="area_exited" from="interact_area" to="." method="_on_interact_area_area_exited"]

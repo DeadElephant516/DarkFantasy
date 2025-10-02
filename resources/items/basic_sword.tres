@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="InvItem" load_steps=4 format=3 uid="uid://dxxcsawlijybm"]
+
+[ext_resource type="Texture2D" uid="uid://cd26tdavi80n0" path="res://textures/Icons/sword.png" id="1_ittmq"]
+[ext_resource type="PackedScene" uid="uid://t677qahx040k" path="res://scenes/swords/basic_sword.tscn" id="2_blw6p"]
+[ext_resource type="Script" path="res://scripts/classes/InvItem.gd" id="3_cyc1s"]
+
+[resource]
+script = ExtResource("3_cyc1s")
+name = "basic sword"
+scene = ExtResource("2_blw6p")
+type = "weapon"
+description = "better than nothing"
+icon = ExtResource("1_ittmq")

@@ -9,9 +9,9 @@
 [ext_resource type="Texture2D" uid="uid://x2tds0dff8qv" path="res://TerrainData/terrain_slot1_normal_roughness.png" id="7_pndoy"]
 [ext_resource type="PackedScene" uid="uid://6d8peas6uukv" path="res://scenes/nature/hanging_tree.tscn" id="8_v6ivb"]
 [ext_resource type="PackedScene" uid="uid://u4gtq6u8r1u0" path="res://scenes/entities/player/player.tscn" id="9_k6m1v"]
-[ext_resource type="PackedScene" uid="uid://cy4msefshpb5y" path="res://scenes/interactables/pick_up.tscn" id="10_k4a0e"]
-[ext_resource type="Resource" uid="uid://dxxcsawlijybm" path="res://resources/basic_sword.tres" id="11_27mr5"]
-[ext_resource type="Resource" uid="uid://3jw8eqtuu7tu" path="res://resources/iron_sword.tres" id="12_r21pq"]
+[ext_resource type="PackedScene" uid="uid://cy4msefshpb5y" path="res://scenes/base_scenes/interactables/pick_up.tscn" id="10_k4a0e"]
+[ext_resource type="Resource" uid="uid://dxxcsawlijybm" path="res://resources/items/basic_sword.tres" id="11_27mr5"]
+[ext_resource type="Resource" uid="uid://3jw8eqtuu7tu" path="res://resources/items/iron_sword.tres" id="12_r21pq"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i1loj"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
